@@ -1,13 +1,27 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.mafia.lock'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.mafia.lock"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.0'
+    
+    // This prevents the build from failing if it can't find your app icon
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // Removed the material dependency to stop XML theme conflicts
 }
